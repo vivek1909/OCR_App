@@ -1,3 +1,12 @@
+* {
+  padding: 0;
+  margin: 50px;
+  text-align: center;
+  background: wheat;
+  font-family: sans-serif;
+}
+
 h1 {
-  color: red;
+  font-size: 50px;
+  color: brown;
 }
