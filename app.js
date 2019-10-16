@@ -17,6 +17,7 @@ const storage = multer.diskStorage({
   }
 });
 
+//upload
 const upload = multer({ storage: storage }).single("avatar");
 
 app.set("view engine", "ejs");
@@ -27,9 +28,11 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+//store in uploads
 app.post("/upload", (req, res) => {
   upload(req, res, err => {
     fs.readFile(`./uploads/${req.file.originalname}`, (err, data) => {
+      //if error
       if (err) return console.log("This is your error ", err);
 
       worker
@@ -51,5 +54,6 @@ app.get("/download", (req, res) => {
 });
 
 // start up the server
+//running on port 5000
 const PORT = 5000 || process.env.PORT;
-app.listen(PORT, () => console.log(`Hey Server has started on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server has started on port ${PORT}`));
